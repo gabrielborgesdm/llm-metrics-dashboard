@@ -23,12 +23,41 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+LLM Renderer API - A NestJS-based backend application with JWT authentication, user management, and comprehensive API documentation.
+
+## Features
+
+- JWT Authentication (Sign up / Sign in)
+- User Management with Role-based Access Control
+- TypeORM Database Integration (PostgreSQL/MySQL)
+- Input Validation with class-validator
+- Global Authentication Guard
+- Swagger API Documentation
 
 ## Project setup
 
 ```bash
 $ npm install
+```
+
+## Environment Configuration
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Server
+PORT=3000
+
+# Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+DB_NAME=your_database
+
+# JWT
+JWT_SECRET=your_jwt_secret_key
+JWT_ACCESS_TOKEN_EXPIRATION=1h
 ```
 
 ## Compile and run the project
@@ -43,6 +72,29 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## API Documentation
+
+Once the application is running, access the Swagger API documentation at:
+
+```
+http://localhost:3000/api
+```
+
+The Swagger UI provides:
+- Interactive API testing
+- Detailed endpoint descriptions
+- Request/response schemas
+- Authentication support
+
+## API Endpoints
+
+### Authentication
+- `POST /auth/signup` - Register a new user
+- `POST /auth/signin` - Sign in with email and password
+
+### Protected Routes
+All other endpoints require JWT authentication via Bearer token.
 
 ## Run tests
 
