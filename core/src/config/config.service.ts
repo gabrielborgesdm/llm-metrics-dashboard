@@ -32,6 +32,8 @@ export class ConfigService {
       DB_USER: Joi.string().default('user'),
       DB_PASSWORD: Joi.string().default('password'),
       DB_NAME: Joi.string().default('db'),
+      JWT_SECRET: Joi.string().required(),
+      JWT_ACCESS_TOKEN_EXPIRATION: Joi.string().default('1h'),
     });
 
     const validatedEnvConfig = envVarsSchema.validate(envConfig, {
@@ -63,5 +65,13 @@ export class ConfigService {
       autoLoadEntities: true,
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     };
+  }
+
+  get jwtSecret(): string {
+    return this.envConfig.JWT_SECRET;
+  }
+
+  get jwtAccessTokenExpiration(): number {
+    return +this.envConfig.JWT_ACCESS_TOKEN_EXPIRATION;
   }
 }
