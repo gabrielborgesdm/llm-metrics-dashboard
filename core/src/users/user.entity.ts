@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 import { UserRole } from './user.constants';
-import { Loan } from 'src/loan/loan.entity';
+import { Loan } from '../loan/loan.entity';
 
 @Entity()
 export class User {

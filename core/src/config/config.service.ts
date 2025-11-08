@@ -60,7 +60,8 @@ export class ConfigService {
       username: this.envConfig.DB_USER,
       password: this.envConfig.DB_PASSWORD,
       database: this.envConfig.DB_NAME,
-      synchronize: true,
+      autoLoadEntities: true,
+      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     };
   }
 }
