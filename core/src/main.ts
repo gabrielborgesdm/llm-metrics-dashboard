@@ -1,28 +1,15 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { configureApp, setupSwagger } from './app.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
-    }),
-  );
+  // Apply common app configuration
+  configureApp(app);
 
-  const config = new DocumentBuilder()
-    .setTitle('LLM Renderer API')
-    .setDescription('API documentation for LLM Renderer')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  // Setup Swagger documentation
+  setupSwagger(app);
 
   await app.listen(process.env.PORT ?? 3000);
 }

@@ -64,6 +64,8 @@ export class ConfigService {
       database: this.envConfig.DB_NAME,
       autoLoadEntities: true,
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      synchronize: this.envConfig.NODE_ENV === 'test',
+      dropSchema: this.envConfig.NODE_ENV === 'test',
     };
   }
 

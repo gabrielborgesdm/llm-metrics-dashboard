@@ -6,12 +6,6 @@ import { config } from 'dotenv';
 // Load .env file from the core directory
 config({ path: path.join(__dirname, '..', '.env') });
 
-console.log(process.env.DB_HOST);
-console.log(process.env.DB_PORT);
-console.log(process.env.DB_USER);
-console.log(process.env.DB_PASSWORD);
-console.log(process.env.DB_NAME);
-
 export default new DataSource({
   type: 'postgres',
   host: process.env.DB_HOST,
@@ -21,4 +15,6 @@ export default new DataSource({
   database: process.env.DB_NAME,
   entities: [path.join(__dirname, '**', '*.entity.{ts,js}')],
   migrations: [path.join(__dirname, 'migrations', '*.{ts,js}')],
+  synchronize: process.env.NODE_ENV === 'test',
+  dropSchema: process.env.NODE_ENV === 'test',
 });
