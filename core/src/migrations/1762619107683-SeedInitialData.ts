@@ -17,7 +17,7 @@ export class SeedInitialData1762619107683 implements MigrationInterface {
     // Insert Authors
     await queryRunner.query(
       `INSERT INTO "author" ("name", "bio", "birthDate") VALUES
-        ('J.K. Rowling', 'British author best known for the Harry Potter series', '1965-07-31'),
+        ('J.R.R. Tolkien', 'English writer, philologist, and professor, best known for The Hobbit and The Lord of the Rings', '1892-01-03'),
         ('George Orwell', 'English novelist and essayist, journalist and critic', '1903-06-25'),
         ('Jane Austen', 'English novelist known primarily for her six major novels', '1775-12-16'),
         ('F. Scott Fitzgerald', 'American novelist and short story writer', '1896-09-24')`,
@@ -27,10 +27,10 @@ export class SeedInitialData1762619107683 implements MigrationInterface {
     await queryRunner.query(
       `INSERT INTO "book" ("title", "summary", "isbn", "publishedAt") VALUES
         (
-          'Harry Potter and the Philosopher''s Stone',
-          'The first novel in the Harry Potter series follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday. He receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry, where he begins his education in magic and learns about his past.',
-          '978-0747532699',
-          '1997-06-26'
+          'The Fellowship of the Ring',
+          'The first volume of The Lord of the Rings. It follows the hobbit Frodo Baggins as he and the Fellowship embark on a quest to destroy the One Ring, traveling from the Shire to the breaking of the Fellowship.',
+          '978-0618346257',
+          '1954-07-29'
         ),
         (
           '1984',
@@ -62,7 +62,7 @@ export class SeedInitialData1762619107683 implements MigrationInterface {
     // Assuming IDs will be auto-generated starting from 1
     await queryRunner.query(
       `INSERT INTO "book_authors_author" ("bookId", "authorId") VALUES
-        (1, 1), -- Harry Potter by J.K. Rowling
+        (1, 1), -- The Fellowship of the Ring by J.R.R. Tolkien
         (2, 2), -- 1984 by George Orwell
         (3, 3), -- Pride and Prejudice by Jane Austen
         (4, 4), -- The Great Gatsby by F. Scott Fitzgerald
@@ -86,10 +86,10 @@ export class SeedInitialData1762619107683 implements MigrationInterface {
       `DELETE FROM "book_authors_author" WHERE "bookId" IN (1, 2, 3, 4, 5)`,
     );
     await queryRunner.query(
-      `DELETE FROM "book" WHERE "isbn" IN ('978-0747532699', '978-0451524935', '978-0141439518', '978-0743273565', '978-0451526342')`,
+      `DELETE FROM "book" WHERE "isbn" IN ('978-0618346257', '978-0451524935', '978-0141439518', '978-0743273565', '978-0451526342')`,
     );
     await queryRunner.query(
-      `DELETE FROM "author" WHERE "name" IN ('J.K. Rowling', 'George Orwell', 'Jane Austen', 'F. Scott Fitzgerald')`,
+      `DELETE FROM "author" WHERE "name" IN ('J.R.R. Tolkien', 'George Orwell', 'Jane Austen', 'F. Scott Fitzgerald')`,
     );
     await queryRunner.query(
       `DELETE FROM "user" WHERE "email" IN ('admin@library.com', 'member@library.com')`,

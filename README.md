@@ -1,11 +1,20 @@
 # LLM Metrics Dashboard
 
-A library management system built with NestJS and TypeORM.
+A dynamic dashboard leveraging LLM for rendering with dynamic SQL queries based on natural language.
+
+## Architecture
+
+This project consists of three main components:
+
+1. **Frontend**: React application for visualization and user interaction
+2. **Core API**: NestJS backend for data management and API endpoints
+3. **LLM Processing**: Python service for converting natural language to SQL queries
 
 ## Prerequisites
 
 - Node.js 16+ and npm
 - PostgreSQL 12+
+- Python 3.9+ (for LLM processing service)
 
 ## Database Setup
 
@@ -60,9 +69,9 @@ After running migrations, you can login with these default users:
 
 The database will be populated with:
 - **2 Users**: 1 admin and 1 member (with hashed passwords)
-- **4 Authors**: J.K. Rowling, George Orwell, Jane Austen, F. Scott Fitzgerald
+- **4 Authors**: J.R.R. Tolkien, George Orwell, Jane Austen, F. Scott Fitzgerald
 - **5 Books**:
-  - Harry Potter and the Philosopher's Stone
+  - The Fellowship of the Ring
   - 1984
   - Pride and Prejudice
   - The Great Gatsby
